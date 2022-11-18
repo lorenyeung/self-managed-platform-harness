@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: ClusterRoleBinding
+metadata:
+  name: harness-preflight-list-resources-global
+subjects:
+- kind: ServiceAccount
+  name: kotsadm # Name is case sensitive
+  namespace: harness
+roleRef:
+  kind: ClusterRole
+  name: harness-list-preflight-checks
+  apiGroup: rbac.authorization.k8s.io
